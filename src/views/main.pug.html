@@ -1,0 +1,13 @@
+extends /base/_head
+block vars
+	- var lang = 'ru'
+	- var title = ''
+	//- Preload fonts
+	- var fonts = []
+
+block content
+	.wrapper
+		include /sections/_header
+		main.page.page_main
+		include /sections/_footer
+	include /base/_scripts

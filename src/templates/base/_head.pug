@@ -1,0 +1,30 @@
+block vars
+	- var lang = ''
+	- var title = ''
+	- var fonts = []
+
+include _mixins
+doctype html
+html(lang= lang)
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		// Проверка поддержки webp, avif.
+		// Если - есть поддержка, то добавляет классы webp, avif тегу html
+		// (Для использования webp, avif в css)
+		script.
+			const detect=function(A=[]){var t=[{type:"webp",url:"data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAvAAAAEAfQpv5HmQMR0f8A"},{type:"avif",url:"data:image/avif;base64,AAAAHGZ0eXBtaWYxAAAAAG1pZjFhdmlmbWlhZgAAAPFtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAHmlsb2MAAAAABEAAAQABAAAAAAEVAAEAAAAeAAAAKGlpbmYAAAAAAAEAAAAaaW5mZQIAAAAAAQAAYXYwMUltYWdlAAAAAHBpcHJwAAAAUWlwY28AAAAUaXNwZQAAAAAAAAABAAAAAQAAABBwYXNwAAAAAQAAAAEAAAAVYXYxQ4EgAAAKBzgABpAQ0AIAAAAQcGl4aQAAAAADCAgIAAAAF2lwbWEAAAAAAAAAAQABBAECg4QAAAAmbWRhdAoHOAAGkBDQAjITFkAAAEgAAAB5TNw9UxdXU6F6oA == "}].concat(A),e={},o=[],a=document.querySelector('html');return t.map(((A,t)=>{!function(A){let t=new Image;t.src=A.url,t.onerror=function(t){var s=new Set(a.getAttribute("class")?a.getAttribute("class").split(" "):[]);o.push(new Promise((function(t,o){e[A.type.toLowerCase()]=!1,t({[A.type.toLowerCase()]:!1})}))),s.add("no-"+A.type.toLowerCase()),a.setAttribute("class",[...s].join(" "))},t.onload=function(t){var s=new Set(a.getAttribute("class")?a.getAttribute("class").split(" "):[]);o.push(new Promise((function(t,o){e[A.type.toLowerCase()]=!0,t({[A.type.toLowerCase()]:!0})}))),s.add(A.type.toLowerCase()),a.setAttribute("class",[...s].join(" "))}}(A)})),Promise.all(o).then((function(){return e}))};detect()
+		// Preload fonts
+		each font in fonts
+			link(rel="preload" href=`fonts/${font}.woff2` as="font" type="font/woff2" crossorigin)
+		// Favicons
+		link(rel="icon" type="image/x-icon" href="img/favicons/favicon.ico")
+		//- link(rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png")
+		//- link(rel="icon" type="image/png" sizes="32x32" href="./img/favicons/favicon-32x32.png")
+		//- link(rel="manifest" href="./img/favicons/site.webmanifest")
+		//- link(rel="mask-icon" href="./img/favicons/safari-pinned-tab.svg" color="#00aba9")
+		//- meta(name="msapplication-TileColor" content="#00aba9")
+		//- meta(name="theme-color" content="#ffffff")
+		title= title
+	body
+		block content

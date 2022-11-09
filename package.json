@@ -1,0 +1,47 @@
+{
+  "name": "gulp-vituum-template",
+  "version": "1.0",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "dev": "gulp && vite serve -c config/vite.config.dev.js",
+    "build": "gulp build --build && vite build -c config/vite.config.build.js",
+    "deployFTPHtml": "gulp build --build && vite build -c config/vite.config.build.js && gulp ftp --ftpHtml",
+    "deployFTPServer": "gulp build --build && vite build -c config/vite.config.build.js && gulp ftp --ftpServer",
+    "sprite": "gulp sprite",
+    "fonts": "gulp fonts --rewrite",
+    "npm": "npm install"
+  },
+  "browserslist": [
+    ">1%",
+    "not op_mini all",
+    "not ie 11",
+    "last 3 chrome version",
+    "last 3 firefox version",
+    "last 3 safari version"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-alias": "latest",
+    "@rollup/plugin-replace": "latest",
+    "@vituum/pug": "latest",
+    "autoprefixer": "latest",
+    "del": "latest",
+    "gulp": "latest",
+    "gulp-fonter-fix": "latest",
+    "gulp-if": "latest",
+    "gulp-newer": "latest",
+    "gulp-notify": "latest",
+    "gulp-plumber": "latest",
+    "gulp-rename": "latest",
+    "gulp-sharp-responsive": "latest",
+    "gulp-svg-sprite": "latest",
+    "gulp-ttf2woff": "latest",
+    "gulp-ttf2woff2": "latest",
+    "gulp-util": "latest",
+    "postcss": "latest",
+    "sass": "latest",
+    "vinyl-ftp": "latest",
+    "vite": "latest",
+    "vituum": "latest"
+  }
+}
